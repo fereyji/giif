@@ -1,0 +1,22 @@
+<div class="row" id="product">
+<% fields_for 'order[products]', product, :index => '' do |f| -%>
+  <%= error_messages_for :produc, :object => product %>
+  <%= f.hidden_field :id unless product.new_record? %>
+  <span class="pd_quantity">
+  	<%= f.text_field :quantity, :size => '4', :maxlenght => '4' %>
+ </span>
+ <span class="pd_description">
+  	<%= f.text_field :description, :size => '47', :maxlenght => '70' %>
+ </span>
+ <span class="pd_type" id="product_type">
+  	<%= f.select(:product_category_id, ProductCategory.all(:order => 'name ASC').collect { |record| [record.name, record.id] })%>
+ </span>
+ <span class="pd_unit" id="product_unit">
+  	<%= f.select(:unit_type_id, UnitType.all(:order => 'name ASC').collect { |record| [record.name, record.id] })%>
+ </span>
+ <span class="pd_actions">
+    <%= link_to_function "Borrar", "$(this).up('.product').remove();" %>
+ </span>
+   
+<% end -%>
+</div>

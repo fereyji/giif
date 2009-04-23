@@ -31,4 +31,16 @@ module ApplicationHelper
   def link_to_action(title, icon, action)
     link_to(image_tag(icon, :title => title), action) + link_to(title, action)
   end
+  
+  def add_product_link(label, partial='product')
+    link_to_function label do |page|
+      page.insert_html :bottom, :products, :partial => partial, :object => OrderProduct.new
+    end
+ end
+  
+  def add_provider_link(label, partial='provider')
+    link_to_function label do |page|
+      page.insert_html :bottom, :providers, :partial => partial, :object => Provider.new
+    end
+ end
 end

@@ -47,22 +47,22 @@ class Order < ActiveRecord::Base
   # after_initialize :build_products
   # after_initialize :build_providers
  
-  before_validation :verify_products_and_providers
+ # before_validation :verify_products_and_providers
   # Fix It: Move this method to OrderFile class if the accepts_nested_attributes_for method is improved
   before_save :read_file
   
   default_scope :order => "orders.date ASC"
   
-  def initialize(*args)
-    super
-    if args.size > 0
-      products.build unless args.first[:products_attributes]
-      providers.build unless args.first[:providers_attributes]
-    else
-      providers.build
-      products.build
-    end 
-  end
+  # def initialize(*args)
+  #   super
+  #   if args.size > 0
+  #     products.build unless args.first[:products_attributes]
+  #     providers.build unless args.first[:providers_attributes]
+  #   else
+  #     providers.build
+  #     products.build
+  #   end 
+  # end
   
   def self.paginate_by_user_id(user_id, page=1, per_page=20)
     paginate(:conditions => { :user_id =>  user_id }, :page => page, :per_page => per_page)

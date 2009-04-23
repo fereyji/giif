@@ -5,13 +5,9 @@
     <span class="pd_type">Categoría</span>
     <span class="pd_unit">Unidad</span>
     <span class="pd_actions">Acciones</span>
-      
-    <%= render :partial => 'product_form', :locals => { :f => f } %>
 </div>
 
-<%= link_to_function "Agregar" do |page|   
-	page.insert_html :bottom, 'products', :partial => "product_form", :locals => { :f => f }
- end %>
+<%= add_product_link 'Agregar' %>
 
 
 <%= content_tag(:h2, "Proveedor(es):") %>
@@ -19,8 +15,6 @@
   	<span class="pv_description">Proveedor</span>  	
 	<span class="pv_email">Email</span>
     <span class="pv_actions">Acciones</span>
-	<%= render :partial => 'provider_form', :locals => { :f => f } %>
 </div>
-<%= link_to_function "Agregar" do |page|   
-	page.insert_html :bottom, 'providers', :partial =>"provider_form", :locals => { :f => f }
-end %>
+
+<%= add_provider_link 'Agregar' %>

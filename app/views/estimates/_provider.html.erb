@@ -1,0 +1,15 @@
+<div class="row" id="provider">
+<% fields_for 'order[providers]', provider, :index => '' do |f| -%>
+  <%= error_messages_for :provider, :object => provider %>
+  <%= f.hidden_field :id unless provider.new_record? %>
+  	<span class="pv_description">
+   		<%= f.text_field :name, :size => '84', :maxlenght => '100' %>
+  	</span>
+	<span class="pv_email">
+   		<%= f.text_field :email, :size => '84', :maxlenght => '100' %>
+  	</span>
+ 	<span class="pv_actions">
+    	<%= link_to_function "Borrar", "$(this).up('.provider').remove();" %>
+ 	</span>
+<% end -%>
+</div>
